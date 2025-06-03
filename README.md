@@ -1,4 +1,3 @@
-"""
 # Phenomenological Modeling of the O'Connell Effect in Eclipsing Binaries
 
 This repository contains the Python code used for the analysis in:
