@@ -43,8 +43,7 @@ sp_modeling(phase, mag, error)
 
 ## Repository Contents
 - `modeling.py`: Main code with Fourier + super-Gaussian modeling tools.
-- `Multi_band_analysis_of_the_O_Connell_effect_in_14_eclipsing_binaries__CLEAN_RESUBMISSION_.pdf`: Paper describing the model and results.
-- Example notebook (optional, to be added): how to preprocess data and run the model.
+- Example notebook : how to preprocess data and run the model.
 
 ## Code Highlights
 - `interactive_super_gauss_tuner`: Real-time GUI for eclipse shape tuning.
@@ -61,4 +60,3 @@ Flores Cabrera et al. (2025), A&A, DOI: TBD
 
 ## License
 This project is released under the MIT License.
-"""
