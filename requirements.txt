@@ -1,0 +1,7 @@
+# requirements.txt
+numpy
+matplotlib
+scipy
+astropy
+lmfit
+symfit
