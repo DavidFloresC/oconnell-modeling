@@ -33,7 +33,7 @@ pip install numpy matplotlib scipy astropy lmfit symfit
 from modeling import sp_modeling
 
 # Load your light curve data
-phase = ...  # folded phase values between 0 and 1
+phase = ...  # folded phase values between 0 and 1, with phase 0 corresponding to the deeper eclipse
 mag = ...    # corresponding magnitudes or normalized flux
 error = ...  # associated uncertainties
 
