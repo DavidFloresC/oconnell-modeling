@@ -1,5 +1,3 @@
-# README for GitHub repository
-
 """
 # Phenomenological Modeling of the O'Connell Effect in Eclipsing Binaries
 
