@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/994918128.svg)](https://doi.org/10.5281/zenodo.15588651)
+
 # Phenomenological Modeling of the O'Connell Effect in Eclipsing Binaries
 
 This repository contains the Python code used for the analysis in:
