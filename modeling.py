@@ -1,18 +1,19 @@
 """
-PHENOMENOLOGICAL MODELING OF THE O'CONNELL EFFECT
-IN ECLIPSING BINARIES
+Super Gaussian O'Connell Modeling Package 
 
-Implementation of the super-Gaussian + Fourier series model from:
-Flores Cabrera et al. (2025), A&A, [DOI]
+A comprehensive package for modeling O'Connell effect EBs light curves using super-Gaussian functions
+and Fourier series. This package provides tools for fitting stellar photometry
+data with interactive parameter tuning capabilities.
 
-Key components:
-1. super_gauss() - Super-Gaussian eclipse model
-2. fourier_series2() - Optimized Fourier series
-3. interactive_super_gauss_tuner() - GUI for parameter tuning
-4. sp_modeling() - Main modeling pipeline
-5. OER/LCA calculation - Quantifying light curve asymmetry
+Main Features:
+- Super-Gaussian function modeling
+- Fourier series fitting
+- Interactive parameter tuning
+- Monte Carlo integration
+- O'Connell Effect Ratio (OER) and Light Curve Asymmetry (LCA) calculations
 
-Designed for analysis of ZTF and ATLAS multi-band photometry
+Author: David Flores
+License: MIT
 """
 
 import numpy as np
@@ -710,10 +711,10 @@ def sp_modeling(phase, mag, error):
     
     # Orbital Eccentricity Ratio (OER)
     I1, err1 = integrate_mcmc(
-        lambda t: -gg_fit9(t) + np.max(gg_fit9(phase)), 0, 0.5, N=500000
+        lambda t: gg_fit9(t) - np.min(gg_fit9(phase)), 0, 0.5, N=500000
     )
     I2, err2 = integrate_mcmc(
-        lambda t: -gg_fit9(t) + np.max(gg_fit9(phase)), 0.5, 1, N=500000
+        lambda t: gg_fit9(t) - np.min(gg_fit9(phase)), 0.5, 1, N=500000
     )
     
     # Light Curve Asymmetry (LCA) 
@@ -733,8 +734,8 @@ def sp_modeling(phase, mag, error):
     print("\n" + "="*50)
     print("ASTROPHYSICAL PARAMETERS")
     print("="*50)
-    print(f"OER (O'Connell Effect Ratio): {OER:.4f} ± {OER_err:.4f}")
-    print(f"LCA (Light Curve Asymmetry):     {LCA:.4f} ± {LCA_err:.4f}")
+    print(f"OER (O'Connell Effect Ratio): {OER:.5f} ± {OER_err:.5f}")
+    print(f"LCA (Light Curve Asymmetry): {LCA:.5f} ± {LCA_err:.5f}")
     print("="*50)
 
     # Generate diagnostic plots
@@ -810,7 +811,7 @@ def _create_diagnostic_plots(phase, mag, error, phase2, mask_ext, comps, gg_fit9
     y_model = gg_fit9(x_model)
     
     # Plot model and data
-    ax_main.plot(x_model, y_model, color='black', linewidth=2, 
+    ax_main.plot(x_model, y_model, color='black', 
                 label='Final Model', zorder=100)
     ax_main.errorbar(phase, mag, yerr=error, fmt='o', color='#009988',
                      lw=0.5, ms=2, zorder=50)
